@@ -1,0 +1,264 @@
+:target::before {
+  content: "";
+  display: block;
+  height: 60px;
+  margin: -60px 0 0;
+}
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0px;
+}
+
+section {
+  border-bottom: 1px black solid;
+  padding: 10px;
+}
+
+#pointer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+#pointer #arrow {
+  align-self: center;
+  width: 30px;
+  height: 30px;
+  border-bottom: 10px solid blue;
+  border-left: 10px solid blue;
+  transform: rotate(-45deg);
+  position: relative;
+  animation-name: pointdown;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+@keyframes pointdown {
+  0% {
+    top: 0px;
+  }
+  100% {
+    top: 200px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #animation svg {
+    height: 100%;
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 600px) {
+  #animation svg {
+    height: 50%;
+    width: 50%;
+  }
+}
+#animation #line1 {
+  animation: line 2s ease-in infinite;
+  animation-delay: 1s;
+}
+#animation #line2 {
+  animation: line 1s ease-in infinite;
+  animation-delay: 2s;
+}
+#animation #line3 {
+  animation: line 3s ease-in infinite;
+  animation-delay: 3s;
+}
+@keyframes line {
+  from {
+    fill: white;
+  }
+  to {
+    fill: #a9a9a9;
+  }
+}
+#animation #righthand {
+  transform-origin: right;
+  transform-box: fill-box;
+  animation: clickhand infinite alternate 0.8s;
+}
+@keyframes clickhand {
+  0% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(10deg);
+  }
+}
+#animation #lefthand {
+  animation: movehand infinite alternate 1s;
+}
+@keyframes movehand {
+  0% {
+    transform: translateX(0px) translateY(0px);
+  }
+  100% {
+    transform: translateX(5px) translateY(0px);
+  }
+}
+#animation #foot {
+  transform-origin: right;
+  transform-box: fill-box;
+  animation: movefoot infinite alternate 2s;
+}
+@keyframes movefoot {
+  0% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(10deg);
+  }
+}
+
+.header {
+  position: sticky;
+  display: flex;
+  top: 0;
+  background-color: blue;
+  padding: 5px;
+  color: white;
+}
+@media screen and (max-width: 600px) {
+  .header__logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .header__nav {
+    display: none;
+    width: 0%;
+  }
+}
+@media screen and (min-width: 600px) {
+  .header__logo {
+    width: 20%;
+  }
+  .header__nav {
+    display: block;
+    width: 80%;
+  }
+}
+.header a {
+  color: white;
+  text-decoration: none;
+}
+.header nav ol,
+.header nav ul {
+  list-style: none;
+  display: flex;
+  color: white;
+  justify-content: space-around;
+}
+
+.opening {
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (max-width: 600px) {
+  .opening__text-element {
+    align-self: center;
+  }
+}
+@media screen and (min-width: 600px) {
+  .opening__text-element {
+    align-self: auto;
+  }
+}
+
+.footer {
+  background-color: blue;
+  padding: 5px;
+  color: white;
+}
+@media screen and (max-width: 600px) {
+  .footer__logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .footer__nav {
+    display: none;
+    width: 0%;
+  }
+}
+@media screen and (min-width: 600px) {
+  .footer__logo {
+    width: 20%;
+  }
+  .footer__nav {
+    display: block;
+    width: 80%;
+  }
+}
+.footer a {
+  color: white;
+  text-decoration: none;
+}
+
+.gridlike {
+  display: grid;
+  justify-content: space-between;
+}
+@media screen and (max-width: 600px) {
+  .gridlike {
+    grid-template-rows: 32% 32% 32%;
+    row-gap: 10px;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .gridlike {
+    grid-template-columns: 32% 32% 32%;
+  }
+}
+.gridlike article {
+  padding: 10px;
+  border: 0.1px solid grey;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+@media screen and (max-width: 600px) {
+  .gridlike article .content img {
+    height: 30vw;
+    width: 40vw;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .gridlike article .content img {
+    height: 15vw;
+    width: 20vw;
+  }
+}
+.gridlike article .redirect {
+  margin-top: auto;
+}
+
+.form {
+  display: grid;
+  row-gap: 10px;
+}
+@media screen and (max-width: 600px) {
+  .form {
+    grid-template-columns: 100%;
+    justify-content: center;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .form {
+    grid-template-columns: 50%;
+    justify-content: left;
+  }
+}
+.form input[name=name] {
+  width: 50%;
+}
+.form button {
+  width: 30%;
+}
+
+/*# sourceMappingURL=app.css.map */
