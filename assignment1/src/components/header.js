@@ -1,10 +1,27 @@
 import React from "react";
+import { useState, useEffect } from "react";
 
 const Header = () => {
+  const [isHiddenPanel, setPanelHidden] = useState(false);
+  function test(event) {
+    event.preventDefault();
+    console.log(event);
+    console.log(window.outerWidth);
+  }
+
+  /* useEffect(() => {
+    console.log("asd");
+  }, [window.outerWidth < 600]);*/
+
   return (
     <header className="header">
       <p className="header__logo">
-        <a href="#opening">El Niño &copy;</a>{" "}
+        <a href="#opening">El Niño &copy;</a>
+      </p>
+      <p id="hamburger">
+        <a href="panel" onClick={test}>
+          <i class="fa fa-bars"></i>
+        </a>
       </p>
       <nav className="header__nav">
         <ul>

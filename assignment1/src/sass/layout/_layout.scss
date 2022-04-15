@@ -1,20 +1,29 @@
 .header {
   position: sticky;
-  display: flex;
-  top: 0;
+  //visuals:
   @include footer_or_header;
-  @include footer_or_header_hidden;
+  //display:flex or grid
+  @include header_flex_or_grid;
+  top: 0;
   a {
+    font-size: 20px;
+    //anchor visuals
     @include footer_or_header_anchor;
   }
-  nav {
-    ol,
+  &__nav {
+    
     ul {
       list-style: none;
-      display: flex;
+      padding-left: 0px;
+      //display flex or block (or hidden)
+      @include ul_flex_or_block;
       color: $header-nav;
       justify-content: space-around;
     }
+  }
+  @include footer_or_header_hidden;
+  #hamburger{
+    justify-self: end;
   }
 }
 
@@ -26,7 +35,10 @@
 
 .footer {
   @include footer_or_header;
-  @include footer_or_header_hidden;
+  //@include footer_or_header_hidden;
+  display: flex;
+
+  flex-direction: column;
   a {
     @include footer_or_header_anchor;
   }
@@ -50,22 +62,22 @@
   }
 }
 
-.grid-column{
+.grid-column {
   display: grid;
   @include grid-column-focus;
   justify-content: center;
-  &__grid-item{
+  &__grid-item {
     @include grid_item;
     justify-content: center;
     display: flex;
     flex-direction: column;
-      label{
-        padding-top: 10px;
-      }
-      button{
-        margin-top: 10px;
-        width: 50%;
-        align-self: center;
-      }
+    label {
+      padding-top: 10px;
+    }
+    button {
+      margin-top: 10px;
+      width: 50%;
+      align-self: center;
+    }
   }
 }
