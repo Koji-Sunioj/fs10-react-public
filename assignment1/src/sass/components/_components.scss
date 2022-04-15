@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: center;
 
-  #arrow {
+#arrow {
     align-self: center;
     width: 30px;
     height: 30px;
@@ -20,6 +20,7 @@
     0% {
       top: 0px;
     }
+
     100% {
       top: 200px;
     }
@@ -27,15 +28,16 @@
 }
 
 #animation {
-  @include animationfix;
   #line1 {
     animation: line 2s ease-in infinite;
     animation-delay: 1s;
   }
+
   #line2 {
     animation: line 1s ease-in infinite;
     animation-delay: 2s;
   }
+
   #line3 {
     animation: line 3s ease-in infinite;
     animation-delay: 3s;
@@ -45,6 +47,7 @@
     from {
       fill: white;
     }
+
     to {
       fill: #a9a9a9;
     }
@@ -60,6 +63,7 @@
     0% {
       transform: rotate(-5deg);
     }
+
     100% {
       transform: rotate(10deg);
     }
@@ -73,6 +77,7 @@
     0% {
       transform: translateX(0px) translateY(0px);
     }
+
     100% {
       transform: translateX(5px) translateY(0px);
     }
@@ -88,6 +93,7 @@
     0% {
       transform: rotate(-5deg);
     }
+
     100% {
       transform: rotate(10deg);
     }

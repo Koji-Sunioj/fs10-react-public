@@ -4,12 +4,14 @@ const Feedback = () => {
   return (
     <section>
       <h2 id="feedback">Feedback</h2>
-      <p>
-        Got something on your mind? Well don't keep it to yourself stranger.
-        Send it our way!
-      </p>
-      <div className="form">
-        <form>
+      <div className="grid-column">
+        <div className="grid-column__grid-item">
+          <p>
+            Got something on your mind? Well don't keep it to yourself stranger.
+            Send it our way!
+          </p>
+        </div>
+        <form className="grid-column__grid-item">
           <label htmlFor="the-name" id="name-label">
             Your name please:
           </label>

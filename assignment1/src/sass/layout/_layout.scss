@@ -19,9 +19,9 @@
 }
 
 .opening {
-  display: flex;
-  flex-direction: column;
-  @include opening_width;
+  &__text-element {
+    align-self: center;
+  }
 }
 
 .footer {
@@ -37,9 +37,7 @@
   @include gridflip;
   justify-content: space-between;
   article {
-    padding: 10px;
-    border: 0.1px solid grey;
-    border-radius: 5px;
+    @include grid_item;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -52,32 +50,22 @@
   }
 }
 
-.form {
-  display: flex;
+.grid-column{
+  display: grid;
+  @include grid-column-focus;
   justify-content: center;
-  width:100%;
- 
-
-  form{
-    @include formfocus2;
+  &__grid-item{
+    @include grid_item;
+    justify-content: center;
     display: flex;
     flex-direction: column;
-    button{
-      margin-top: 10px;
-      align-self: center;
-      width: 30%;
-    }
-    
+      label{
+        padding-top: 10px;
+      }
+      button{
+        margin-top: 10px;
+        width: 50%;
+        align-self: center;
+      }
   }
-  
-  
-  /*
-  @include formfocus;
-  input[name="name"] {
-    width: 50%;
-  }
-  row-gap: 10px;
-  button {
-    width: 30%;
-  }*/
 }
