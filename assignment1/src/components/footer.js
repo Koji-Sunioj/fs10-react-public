@@ -3,8 +3,8 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="footer">
-      <p className="header__logo">... it means, the Niño</p>
-      <div className="header__nav">
+      <p className="footer__logo">... it means, the Niño</p>
+      <div className="footer__hideable">
         <p>Author: Koji Inoue</p>
         <p>
           <a href="mailto:koji.gabriel218@gmail.com">

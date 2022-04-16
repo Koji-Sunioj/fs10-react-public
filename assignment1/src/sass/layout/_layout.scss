@@ -1,29 +1,42 @@
 .header {
   position: sticky;
-  //visuals:
-  @include footer_or_header;
-  //display:flex or grid
-  @include header_flex_or_grid;
   top: 0;
-  a {
-    font-size: 20px;
-    //anchor visuals
-    @include footer_or_header_anchor;
+  @include mobile_width {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+  @include desktop_width {
+    display: flex;
+    flex-direction: row;
   }
   &__nav {
-    
+    @include mobile_width {
+      grid-column: 1 / 3;
+    }
+    @include desktop_width {
+      width: 80%;
+    }
     ul {
       list-style: none;
       padding-left: 0px;
-      //display flex or block (or hidden)
-      @include ul_flex_or_block;
       color: $header-nav;
-      justify-content: space-around;
+      @include mobile_width {
+        display: block;
+      }
+      @include desktop_width {
+        display: flex;
+        justify-content: space-around;
+      }
     }
   }
-  @include footer_or_header_hidden;
-  #hamburger{
+  &__logo {
+    @include desktop_width {
+      width: 20%;
+    }
+  }
+  #hamburger {
     justify-self: end;
+    padding-right: 10px;
   }
 }
 
@@ -34,13 +47,15 @@
 }
 
 .footer {
-  @include footer_or_header;
-  //@include footer_or_header_hidden;
   display: flex;
-
   flex-direction: column;
-  a {
-    @include footer_or_header_anchor;
+  @include mobile_width {
+    &__logo {
+      align-self: center;
+    }
+    &__hideable {
+      display: none;
+    }
   }
 }
 

@@ -25,68 +25,35 @@ section {
   }
 }
 
-@mixin grid_item {
-  padding: 10px;
-  border: 0.1px solid grey;
-  border-radius: 5px;
-}
-
-@mixin footer_or_header_anchor {
+footer a,
+header a {
   color: $header-nav;
   text-decoration: none;
 }
 
-@mixin footer_or_header {
+footer,
+header {
   background-color: $header-footer;
   padding-left: 5px;
   color: $header-nav;
 }
 
-@mixin header_flex_or_grid {
-  @media screen and (max-width: 599px) {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    nav {
-      grid-column: 1 / 3;
-    }
-  }
-
-  @media screen and (min-width: 600px) {
-    display: flex;
-    flex-direction: row;
+@mixin mobile_width {
+  @media (max-width: 599px) {
+    @content;
   }
 }
 
-@mixin ul_flex_or_block {
-  @media screen and (max-width: 599px) {
-    display: block;
-  }
-
-  @media screen and (min-width: 600px) {
-    display: flex;
+@mixin desktop_width {
+  @media (min-width: 600px) {
+    @content;
   }
 }
 
-@mixin footer_or_header_hidden {
-  @media screen and (max-width: 599px) {
-    &__logo {
-      width: 80%;
-      display: flex;
-    }
-    &__nav {
-      width: 20%;
-    }
-  }
-
-  @media screen and (min-width: 600px) {
-    &__logo {
-      width: 20%;
-    }
-
-    &__nav {
-      width: 80%;
-    }
-  }
+@mixin grid_item {
+  padding: 10px;
+  border: 0.1px solid grey;
+  border-radius: 5px;
 }
 
 @mixin grid-column-focus {
