@@ -4,8 +4,8 @@ $header-footer: blue;
 :target::before {
   content: "";
   display: block;
-  height: 80px;
-  margin: -80px 0 0;
+  height: 60px;
+  margin: -60px 0 0;
 }
 
 * {
@@ -34,7 +34,7 @@ header a {
 footer,
 header {
   background-color: $header-footer;
-  padding-left: 5px;
+  
   color: $header-nav;
 }
 

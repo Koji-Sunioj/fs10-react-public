@@ -11,6 +11,8 @@
   }
   &__nav {
     @include mobile_width {
+      padding-left: 10px;
+      background-color: black;
       grid-column: 1 / 3;
     }
     @include desktop_width {
@@ -19,17 +21,22 @@
     ul {
       list-style: none;
       padding-left: 0px;
-      color: $header-nav;
       @include mobile_width {
+        li::before {
+          content: "->   ";
+          color: white;
+        }
         display: block;
       }
       @include desktop_width {
         display: flex;
+
         justify-content: space-around;
       }
     }
   }
   &__logo {
+    padding-left: 10px;
     @include desktop_width {
       width: 20%;
     }
