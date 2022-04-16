@@ -1,29 +1,57 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const Header = () => {
-  const [isHiddenPanel, setPanelHidden] = useState(false);
-  function test(event) {
+  let display;
+  const [isHiddenPanel] = useState(
+    window.innerWidth >= 600 ? (display = "block") : (display = "none")
+  );
+  const [hiddenHamburger] = useState(
+    window.innerWidth >= 600 ? (display = "none") : (display = "block")
+  );
+  const nav = useRef();
+  const hamburger = useRef();
+  const toggled = useRef(false);
+
+  function showPanel(event) {
     event.preventDefault();
-    console.log(event);
-    console.log(window.outerWidth);
+    if (nav.current.style.display === "block") {
+      nav.current.style.display = "none";
+      toggled.current = false;
+    } else if (nav.current.style.display === "none") {
+      nav.current.style.display = "block";
+      toggled.current = true;
+    }
   }
 
-  /* useEffect(() => {
-    console.log("asd");
-  }, [window.outerWidth < 600]);*/
+  function resetPanel() {
+    if (window.innerWidth >= 600) {
+      nav.current.style.display = "block";
+      hamburger.current.style.display = "none";
+      toggled.current = false;
+    } else if (window.innerWidth < 600) {
+      hamburger.current.style.display = "block";
+      if (!toggled.current) {
+        nav.current.style.display = "none";
+      }
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", resetPanel);
+  }, []);
 
   return (
     <header className="header">
       <p className="header__logo">
         <a href="#opening">El Niño &copy;</a>
       </p>
-      <p id="hamburger">
-        <a href="panel" onClick={test}>
-          <i class="fa fa-bars"></i>
+      <p id="hamburger" style={{ display: hiddenHamburger }} ref={hamburger}>
+        <a href="panel" onClick={showPanel}>
+          <i className="fa fa-bars"></i>
         </a>
       </p>
-      <nav className="header__nav">
+      <nav className="header__nav" style={{ display: isHiddenPanel }} ref={nav}>
         <ul>
           <li>
             <a href="#services-header">Services</a>
