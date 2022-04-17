@@ -1,56 +1,44 @@
 import "./App.css";
-import { useState, useEffect } from "react";
-import useCountry from "./components/usecountry";
+import { useRef } from "react";
+
+import GridColumn from "./components/gridcolumn";
+import useCountry from "./hooks/usecountry";
+import GotCountry from "./components/gotcountry";
+import ErrorMessage from "./components/error";
+import Loading from "./components/loading";
 
 function App() {
-  const [data, setCountry] = useCountry("");
+  const [data, error, loading, setCountry] = useCountry(null);
 
-  function test(event) {
+  const countryInput = useRef();
+
+  const getCountryData = async (event) => {
     event.preventDefault();
-    const country = event.target.elements.country.value;
+    const country = countryInput.current.value;
     setCountry(country);
-  }
-
-  const GotCountry = () => {
-    const cleanObject = (object) => {
-      return Object.entries(object).map((lang) => lang[1]);
-    };
-
-    return (
-      <div className="grid">
-        <div className="grid-item">
-          <h1>
-            {data.flag}
-            {data.name.common}
-          </h1>
-          <p>land area: {Intl.NumberFormat().format(data.area)}</p>
-          <p>region: {data.subregion}</p>
-          <p>population: {Intl.NumberFormat().format(data.population)}</p>
-          <p>capital: {data.capital.join(",")}</p>
-          <p>languages: {cleanObject(data.languages).join(",")}</p>
-        </div>
-      </div>
-    );
   };
 
   return (
     <>
-      <div className="grid">
-        <div className="grid-item">
-          <h1>RestCountries API</h1>
-          <form onSubmit={test}>
-            <label htmlFor="country">Country Name: </label>
-            <input
-              type="text"
-              name="country"
-              placeholder="Finland, Suomi.."
-              id="country"
-            />
-            <button>Go</button>
-          </form>
-        </div>
-      </div>
-      {data !== null && <GotCountry />}
+      <GridColumn>
+        <h1>RestCountries API</h1>
+        <form onSubmit={getCountryData}>
+          <label htmlFor="country">Country Name: </label>
+          <input
+            type="text"
+            name="country"
+            placeholder="Finland, Suomi.."
+            id="country"
+            ref={countryInput}
+          />
+          <button>Go</button>
+        </form>
+      </GridColumn>
+      {loading && <Loading />}
+      {data && <GotCountry country={data} />}
+      {error && (
+        <ErrorMessage tried={countryInput.current.value} type={error} />
+      )}
     </>
   );
 }
