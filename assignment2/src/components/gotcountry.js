@@ -1,16 +1,16 @@
 import GridColumn from "./gridcolumn";
 
 const GotCountry = ({ country }) => {
-  const cleanObject = (object) => {
-    return Object.entries(object).map((entry) => entry[1]);
+  const cleanObject = (object, field = false) => {
+    return Object.entries(object).map((entry) =>
+      field ? entry[1][field] : entry[1]
+    );
   };
 
   const getOfficial = (names) => {
-    const officialNames = Object.entries(names.nativeName).map(
-      (element) => element[1].official
-    );
-    const filtered = new Set(officialNames);
-    return [names.official, ...filtered];
+    const officialNames = cleanObject(names.nativeName, "official");
+    const filtered = new Set([names.official, ...officialNames]);
+    return [...filtered];
   };
 
   return (
@@ -24,7 +24,6 @@ const GotCountry = ({ country }) => {
       <p>land area: {Intl.NumberFormat().format(country.area)}</p>
       <p>region: {country.subregion}</p>
       <p>population: {Intl.NumberFormat().format(country.population)}</p>
-
       <p>languages: {cleanObject(country.languages).join(", ")}</p>
     </GridColumn>
   );
