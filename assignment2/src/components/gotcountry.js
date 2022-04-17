@@ -1,6 +1,8 @@
 import GridColumn from "./gridcolumn";
 
-const GotCountry = ({ country }) => {
+const GotCountry = ({ countries }) => {
+  console.log(countries);
+
   const cleanObject = (object, field = false) => {
     return Object.entries(object).map((entry) =>
       field ? entry[1][field] : entry[1]
@@ -14,18 +16,22 @@ const GotCountry = ({ country }) => {
   };
 
   return (
-    <GridColumn>
-      <h2>
-        {country.flag}
-        {country.name.common}
-      </h2>
-      <p>capital: {country.capital.join(", ")}</p>
-      <p>official names: {getOfficial(country.name).join(", ")}</p>
-      <p>land area: {Intl.NumberFormat().format(country.area)}</p>
-      <p>region: {country.subregion}</p>
-      <p>population: {Intl.NumberFormat().format(country.population)}</p>
-      <p>languages: {cleanObject(country.languages).join(", ")}</p>
-    </GridColumn>
+    <>
+      {countries.map((country) => (
+        <GridColumn>
+          <h2>
+            {country.flag}
+            {country.name.common}
+          </h2>
+          <p>capital: {country.capital.join(", ")}</p>
+          <p>official names: {getOfficial(country.name).join(", ")}</p>
+          <p>land area: {Intl.NumberFormat().format(country.area)}</p>
+          <p>region: {country.subregion}</p>
+          <p>population: {Intl.NumberFormat().format(country.population)}</p>
+          <p>languages: {cleanObject(country.languages).join(", ")}</p>
+        </GridColumn>
+      ))}
+    </>
   );
 };
 

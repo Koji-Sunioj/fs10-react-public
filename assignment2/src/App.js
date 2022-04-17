@@ -35,7 +35,7 @@ function App() {
         </form>
       </GridColumn>
       {loading && <Loading />}
-      {data && <GotCountry country={data} />}
+      {data && <GotCountry countries={data} />}
       {error && (
         <ErrorMessage tried={countryInput.current.value} type={error} />
       )}

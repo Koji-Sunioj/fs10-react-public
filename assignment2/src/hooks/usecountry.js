@@ -27,7 +27,7 @@ const useCountry = (country) => {
       })
       .then((data) => {
         setLoading(false);
-        setData(data[0]);
+        setData(data);
       })
       .catch(() => {
         setLoading(false);
