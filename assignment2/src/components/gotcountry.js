@@ -17,8 +17,8 @@ const GotCountry = ({ countries }) => {
 
   return (
     <>
-      {countries.map((country) => (
-        <GridColumn>
+      {countries.map((country, index) => (
+        <GridColumn key={index}>
           <h2>
             {country.flag}
             {country.name.common}
