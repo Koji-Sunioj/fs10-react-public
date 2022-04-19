@@ -1,11 +1,11 @@
 import { Component } from "react";
 
-const withcountry = (country) => (WrappedData) => {
+const withcountry = () => (WrappedData) => {
   class WithFetch extends Component {
-    constructor(props) {
-      super(props);
+    constructor() {
+      super();
       this.state = {
-        country: country,
+        country: null,
         data: null,
         loading: false,
         error: false,
@@ -13,17 +13,19 @@ const withcountry = (country) => (WrappedData) => {
     }
 
     setCountry = async (newcountry) => {
-      this.setState({
-        country: newcountry,
-        loading: true,
-        data: null,
-        error: false,
-      });
-      const newData = await this.fetchCountry(newcountry);
-      if (newData.error) {
-        this.setState({ data: null, loading: false, error: true });
-      } else if (newData.data) {
-        this.setState({ data: newData.data, loading: false, error: false });
+      if (newcountry !== this.state.country) {
+        this.setState({
+          country: newcountry,
+          loading: true,
+          data: null,
+          error: false,
+        });
+        const newData = await this.fetchCountry(newcountry);
+        if (newData.error) {
+          this.setState({ data: null, loading: false, error: true });
+        } else if (newData.data) {
+          this.setState({ data: newData.data, loading: false, error: false });
+        }
       }
     };
 
