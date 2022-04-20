@@ -51,8 +51,8 @@ const withcountry = () => (WrappedData) => {
     render() {
       return (
         <WrappedData
-          update={(country) => {
-            this.setCountry(country);
+          update={(newcountry) => {
+            this.setCountry(newcountry);
           }}
           country={this.state.country}
           data={this.state.data}

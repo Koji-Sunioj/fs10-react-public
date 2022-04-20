@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 
-import PropTypes from "prop-types";
-
 const useCountry = (country) => {
   const [theCountry, setCountry] = useState(country);
   const [data, setData] = useState(null);
@@ -37,10 +35,6 @@ const useCountry = (country) => {
   }
 
   return [data, isError, isloading, setCountry];
-};
-
-useCountry.propTypes = {
-  country: PropTypes.string,
 };
 
 export default useCountry;

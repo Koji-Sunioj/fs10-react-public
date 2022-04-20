@@ -1,4 +1,5 @@
 import "./App.css";
+import PropTypes from "prop-types";
 
 import GridColumn from "./components/gridcolumn";
 import withcountry from "./hocs/withcountry";
@@ -33,6 +34,14 @@ const App = ({ country, data, update, isloading, isError }) => {
       {data && <GotCountry countries={data} />}
     </>
   );
+};
+
+App.propTypes = {
+  country: PropTypes.string,
+  data: PropTypes.array,
+  update: PropTypes.func,
+  isloading: PropTypes.bool,
+  isError: PropTypes.bool,
 };
 
 export default withcountry()(App);
