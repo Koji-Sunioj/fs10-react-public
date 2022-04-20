@@ -1,19 +1,17 @@
+import PropTypes from "prop-types";
+
 import GridColumn from "./gridcolumn";
 
-const ErrorMessage = ({ tried, type }) => {
-  let errorType;
-
-  if (type === "user") {
-    errorType = (
-      <p>
-        Can't find any country called <strong>{tried}</strong> &#129300;
-      </p>
-    );
-  } else if (type === "server") {
-    errorType = <p>Server response error &#129300;</p>;
-  }
+const ErrorMessage = ({ tried }) => {
+  const errorType = (
+    <p>
+      Can't find any country called <strong>{tried}</strong> &#129300;
+    </p>
+  );
 
   return <GridColumn>{errorType}</GridColumn>;
 };
+
+ErrorMessage.propTypes = { tried: PropTypes.string };
 
 export default ErrorMessage;

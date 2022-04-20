@@ -2,20 +2,17 @@ import "./App.css";
 import { useRef } from "react";
 
 import GridColumn from "./components/gridcolumn";
-import useCountry from "./hooks/usecountry";
+import withcountry from "./hocs/withcountry";
 import GotCountry from "./components/gotcountry";
 import ErrorMessage from "./components/error";
 import Loading from "./components/loading";
 
-function App() {
-  const [data, error, loading, setCountry] = useCountry(null);
-
+const App = ({ country, data, update, isloading, isError }) => {
   const countryInput = useRef();
-
-  const getCountryData = async (event) => {
+  const getCountryData = (event) => {
     event.preventDefault();
-    const country = countryInput.current.value;
-    setCountry(country);
+    const newcountry = countryInput.current.value;
+    update(newcountry);
   };
 
   return (
@@ -34,13 +31,11 @@ function App() {
           <button>Go</button>
         </form>
       </GridColumn>
-      {loading && <Loading />}
+      {isError && <ErrorMessage tried={country} />}
+      {isloading && <Loading />}
       {data && <GotCountry countries={data} />}
-      {error && (
-        <ErrorMessage tried={countryInput.current.value} type={error} />
-      )}
     </>
   );
-}
+};
 
-export default App;
+export default withcountry()(App);

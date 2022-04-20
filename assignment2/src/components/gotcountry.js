@@ -1,8 +1,8 @@
+import PropTypes from "prop-types";
+
 import GridColumn from "./gridcolumn";
 
 const GotCountry = ({ countries }) => {
-  console.log(countries);
-
   const cleanObject = (object, field = false) => {
     return Object.entries(object).map((entry) =>
       field ? entry[1][field] : entry[1]
@@ -17,13 +17,13 @@ const GotCountry = ({ countries }) => {
 
   return (
     <>
-      {countries.map((country, index) => (
-        <GridColumn key={index}>
+      {countries.map((country) => (
+        <GridColumn key={country.ccn3}>
           <h2>
             {country.flag}
             {country.name.common}
           </h2>
-          <p>capital: {country.capital.join(", ")}</p>
+          {country.capital && <p>capital: {country.capital.join(", ")}</p>}
           <p>official names: {getOfficial(country.name).join(", ")}</p>
           <p>land area: {Intl.NumberFormat().format(country.area)}</p>
           <p>region: {country.subregion}</p>
@@ -33,6 +33,10 @@ const GotCountry = ({ countries }) => {
       ))}
     </>
   );
+};
+
+GotCountry.propTypes = {
+  countries: PropTypes.array,
 };
 
 export default GotCountry;

@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 
+import PropTypes from "prop-types";
+
 const useCountry = (country) => {
   const [theCountry, setCountry] = useState(country);
   const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [isError, setError] = useState(false);
+  const [isloading, setLoading] = useState(false);
 
   useEffect(() => {
     if (theCountry) {
@@ -19,7 +21,6 @@ const useCountry = (country) => {
     await fetch(`https://restcountries.com/v3.1/name/${theCountry}`)
       .then((response) => {
         if (!response.ok) {
-          setError("server");
           throw new Error();
         } else {
           return response.json();
@@ -31,14 +32,15 @@ const useCountry = (country) => {
       })
       .catch(() => {
         setLoading(false);
-        setData(null);
-        if (error === null) {
-          setError("user");
-        }
+        setError(true);
       });
   }
 
-  return [data, error, loading, setCountry];
+  return [data, isError, isloading, setCountry];
+};
+
+useCountry.propTypes = {
+  country: PropTypes.string,
 };
 
 export default useCountry;

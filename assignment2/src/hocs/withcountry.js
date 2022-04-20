@@ -22,9 +22,9 @@ const withcountry = () => (WrappedData) => {
         });
         const newData = await this.fetchCountry(newcountry);
         if (newData.error) {
-          this.setState({ data: null, loading: false, error: true });
+          this.setState({ loading: false, error: true });
         } else if (newData.data) {
-          this.setState({ data: newData.data, loading: false, error: false });
+          this.setState({ data: newData.data, loading: false });
         }
       }
     };
@@ -56,7 +56,7 @@ const withcountry = () => (WrappedData) => {
           }}
           country={this.state.country}
           data={this.state.data}
-          isloaded={this.state.loading}
+          isloading={this.state.loading}
           isError={this.state.error}
         />
       );
