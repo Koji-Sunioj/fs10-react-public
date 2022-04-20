@@ -1,4 +1,3 @@
-import React from "react";
 import Opening from "./sections/opening";
 import Services from "./sections/services";
 import TechStack from "./sections/techstack";

@@ -1,54 +1,24 @@
-import React from "react";
+import identify from "../../functions/indentify";
+import serviceData from "../sectiondata/servicedata";
+import SectionRow from "../layouts/sectionrow";
+import GridRow from "../layouts/gridrow";
 
 const Services = () => {
   return (
-    <section>
-      <h2 id="services-header">Services</h2>
-      <div className="gridlike">
-        <article>
-          <div className="content">
-            <h3>Cool things</h3>
-            <p id="cool-services">
-              Sometimes we do cool things. If you like cool things, click on
-              "Read More".{" "}
-            </p>
-          </div>
-          <div className="redirect">
-            <button aria-labelledby="services-header cool-services">
-              Read More
-            </button>
-          </div>
-        </article>
-        <article>
-          <div className="content">
-            <h3>Awesome things</h3>
-            <p id="awesome-services">
-              Awesome things are our specialty. If you like awesome things,
-              click on "Read More".
-            </p>
-          </div>
-          <div className="redirect">
-            <button aria-labelledby="services-header awesome-services">
-              Read More
-            </button>
-          </div>
-        </article>
-        <article>
-          <div className="content">
-            <h3>Loco things</h3>
-            <p id="loco-services">
-              We also get loco too. Click "Read More" below if you also wanna
-              get loco!
-            </p>
-          </div>
-          <div className="redirect">
-            <button aria-labelledby="services-header loco-services">
-              Read More
-            </button>
-          </div>
-        </article>
-      </div>
-    </section>
+    <SectionRow htmlID={"services-header"} title={"services"}>
+      {serviceData.map((service) => {
+        const htmlID = identify(service.header);
+        return (
+          <GridRow
+            parentAria={"services-header"}
+            htmlID={htmlID}
+            title={service.header}
+            text={service.text}
+            key={htmlID}
+          />
+        );
+      })}
+    </SectionRow>
   );
 };
 

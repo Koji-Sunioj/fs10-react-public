@@ -1,24 +1,15 @@
-import React from "react";
 import { useState, useEffect, useRef } from "react";
 
 const Header = () => {
-  //states for initialized app. no setstate functions set, since it would
-  //re render the app and nav menu would lose defining values
-  let display;
-  const [isHiddenPanel] = useState(
-    window.innerWidth >= 600 ? (display = "block") : (display = "none")
-  );
-  const [hiddenHamburger] = useState(
-    window.innerWidth >= 600 ? (display = "none") : (display = "block")
-  );
+  const OverSixHundread = window.innerWidth >= 600;
 
-  //useRef() used to persist nav bar values for visibility
+  const [isHiddenPanel] = useState(OverSixHundread ? "block" : "none");
+  const [hiddenHamburger] = useState(OverSixHundread ? "none" : "block");
+
   const nav = useRef();
   const hamburger = useRef();
   const toggled = useRef(false);
 
-  //toggle value if menu clicked, show the nav
-  //only runs when menu button is shown
   const showPanel = (event) => {
     function toggleNav(navStyle, toggleBool) {
       nav.current.style.display = navStyle;
@@ -30,8 +21,6 @@ const Header = () => {
       : toggleNav("block", true);
   };
 
-  //runs when the window is actively resized
-  //will toggle visibility of nav and/or menu
   const resetPanel = () => {
     const isOver = window.innerWidth >= 600;
     if (isOver) {
@@ -46,8 +35,6 @@ const Header = () => {
     }
   };
 
-  //add event listener once, when app is loaded
-  //pointing to resize function for nav and menu
   useEffect(() => {
     window.addEventListener("resize", resetPanel);
   }, []);
