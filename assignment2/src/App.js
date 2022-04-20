@@ -1,5 +1,4 @@
 import "./App.css";
-import { useRef } from "react";
 
 import GridColumn from "./components/gridcolumn";
 import withcountry from "./hocs/withcountry";
@@ -8,10 +7,9 @@ import ErrorMessage from "./components/error";
 import Loading from "./components/loading";
 
 const App = ({ country, data, update, isloading, isError }) => {
-  const countryInput = useRef();
   const getCountryData = (event) => {
     event.preventDefault();
-    const newcountry = countryInput.current.value;
+    const newcountry = event.target.country.value;
     update(newcountry);
   };
 
@@ -26,7 +24,6 @@ const App = ({ country, data, update, isloading, isError }) => {
             name="country"
             placeholder="Finland, Suomi.."
             id="country"
-            ref={countryInput}
           />
           <button>Go</button>
         </form>
