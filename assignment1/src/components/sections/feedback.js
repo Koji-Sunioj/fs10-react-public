@@ -1,9 +1,9 @@
-import SectionColumn from "../layouts/sectioncolumn";
+import Section from "../layouts/section";
 import DynamicHeader from "../layouts/dynamicheader";
 
 const Feedback = () => {
   return (
-    <SectionColumn>
+    <Section gridType={"grid-column"}>
       <DynamicHeader Tag={"h2"} text={"Feedback"} />
       <div className="grid-column__grid-item">
         <p>
@@ -24,7 +24,7 @@ const Feedback = () => {
           Submit
         </button>
       </form>
-    </SectionColumn>
+    </Section>
   );
 };
 

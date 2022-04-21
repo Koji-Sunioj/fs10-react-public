@@ -1,9 +1,9 @@
-import SectionColumn from "../layouts/sectioncolumn";
+import Section from "../layouts/section";
 import DynamicHeader from "../layouts/dynamicheader";
 
 const Opening = () => {
   return (
-    <SectionColumn>
+    <Section gridType={"grid-column"}>
       <DynamicHeader Tag={"h1"} text={"Welcome to the website"} id="opening" />
       <div className="grid-column__grid-item opening" id="animation">
         <p className="opening__text-element">
@@ -172,7 +172,7 @@ const Opening = () => {
       <div id="pointer">
         <div id="arrow"></div>
       </div>
-    </SectionColumn>
+    </Section>
   );
 };
 

@@ -1,12 +1,12 @@
 import identify from "../../functions/indentify";
 import blogData from "../sectiondata/blogdata";
-import SectionRow from "../layouts/sectionrow";
+import Section from "../layouts/section";
 import DynamicHeader from "../layouts/dynamicheader";
 import GridRow from "../layouts/gridrow";
 
 const Blogs = () => {
   return (
-    <SectionRow>
+    <Section gridType={"gridlike"}>
       <DynamicHeader Tag={"h2"} text={"Blogs"} />
       {blogData.map((blog) => {
         const htmlID = identify(blog.header);
@@ -21,7 +21,7 @@ const Blogs = () => {
           />
         );
       })}
-    </SectionRow>
+    </Section>
   );
 };
 

@@ -1,9 +1,9 @@
-import SectionColumn from "../layouts/sectioncolumn";
+import Section from "../layouts/section";
 import DynamicHeader from "../layouts/dynamicheader";
 
 const TechStack = () => {
   return (
-    <SectionColumn>
+    <Section gridType={"grid-column"}>
       <DynamicHeader Tag={"h2"} text={"Tech Stack"} />
       <div className="grid-column__grid-item">
         <p>This is the tech stack we use.</p>
@@ -15,7 +15,7 @@ const TechStack = () => {
         </ul>
         <p>We are #agile #iterators.</p>
       </div>
-    </SectionColumn>
+    </Section>
   );
 };
 
