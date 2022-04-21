@@ -1,3 +1,10 @@
+notes from me, the developer:
+
+1. the first assignment is a very simple layout of a pure html and css (well, sass) landing page for the integrify academy while using react jsx elements for building the layout. the instructions was to be as stateless as possible, which I have achieved but I needed to use useRef() for displaying / hiding the navbar for mobile sized screens and toggling the mobile menu. it was a good assignment to learn from, since I was focused a lot on the logic how each element inherits properties from one another, and to build a site without using bootstrap. it taught me how to use css in the same way that i would like things displayed with bootstrap.
+
+2. the second assignment is also just a simple single page application which asked to build a custom hook and higher order component for fetching data, when the form is submitted with the country name. it taught me how how higher order components are capable of passing any class based values to it's child components, and how the data can be updated, and what happens when they are updated.
+
+
 # React assignment
 Work individually to finish this assignment. You can ask for help from your pair mate, other class mates or instructors
 
