@@ -1,11 +1,13 @@
 import identify from "../../functions/indentify";
 import blogData from "../sectiondata/blogdata";
 import SectionRow from "../layouts/sectionrow";
+import DynamicHeader from "../layouts/dynamicheader";
 import GridRow from "../layouts/gridrow";
 
 const Blogs = () => {
   return (
-    <SectionRow htmlID={"blogs"} title={"blogs"}>
+    <SectionRow>
+      <DynamicHeader Tag={"h2"} text={"Blogs"} />
       {blogData.map((blog) => {
         const htmlID = identify(blog.header);
         return (

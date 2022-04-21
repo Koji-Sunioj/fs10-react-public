@@ -1,10 +1,20 @@
-const SectionRow = ({ htmlID, title, children }) => {
+import PropTypes from "prop-types";
+
+import seperateHeader from "../../functions/seperateh";
+
+const SectionRow = ({ children }) => {
+  const [header, others] = seperateHeader(children);
+
   return (
     <section>
-      <h2 id={htmlID}>{title.charAt(0).toUpperCase() + title.slice(1)}</h2>
-      <div className="gridlike">{children}</div>
+      {header}
+      <div className="gridlike">{others}</div>
     </section>
   );
+};
+
+SectionRow.propTypes = {
+  children: PropTypes.node,
 };
 
 export default SectionRow;

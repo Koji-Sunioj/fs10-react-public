@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 
 const Header = () => {
-  const OverSixHundread = window.innerWidth >= 600;
+  const OverSixHundo = window.innerWidth >= 600;
 
-  const [isHiddenPanel] = useState(OverSixHundread ? "block" : "none");
-  const [hiddenHamburger] = useState(OverSixHundread ? "none" : "block");
+  const [isHiddenPanel] = useState(OverSixHundo ? "block" : "none");
+  const [hiddenHamburger] = useState(OverSixHundo ? "none" : "block");
 
   const nav = useRef();
   const hamburger = useRef();
@@ -52,7 +52,7 @@ const Header = () => {
       <nav className="header__nav" style={{ display: isHiddenPanel }} ref={nav}>
         <ul>
           <li>
-            <a href="#services-header">Services</a>
+            <a href="#services">Services</a>
           </li>
           <li>
             <a href="#tech-stack">Tech Stack</a>

@@ -1,8 +1,10 @@
 import SectionColumn from "../layouts/sectioncolumn";
+import DynamicHeader from "../layouts/dynamicheader";
 
 const Feedback = () => {
   return (
-    <SectionColumn title={"Feedback"} headerType={"h2"}>
+    <SectionColumn>
+      <DynamicHeader Tag={"h2"} text={"Feedback"} />
       <div className="grid-column__grid-item">
         <p>
           Got something on your mind? Well don't keep it to yourself stranger.

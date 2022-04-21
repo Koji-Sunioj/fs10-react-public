@@ -1,16 +1,18 @@
-import identify from "../../functions/indentify";
+import PropTypes from "prop-types";
 
-const SectionColumn = ({ title, children, headerType }) => {
-  const Header = ({ Tag, text, id }) => {
-    return <Tag id={id}>{text}</Tag>;
-  };
+import seperateHeader from "../../functions/seperateh";
 
+const SectionColumn = ({ children }) => {
+  const [header, others] = seperateHeader(children);
   return (
     <section>
-      <Header Tag={headerType} text={title} id={identify(title)} />
-      <div className="grid-column">{children}</div>
+      {header}
+      <div className="grid-column">{others}</div>
     </section>
   );
 };
 
+SectionColumn.propTypes = {
+  children: PropTypes.node,
+};
 export default SectionColumn;
