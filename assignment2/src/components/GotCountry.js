@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import GridColumn from "./gridcolumn";
+import GridColumn from "./GridColumn";
 
 const GotCountry = ({ countries }) => {
   const cleanObject = (object, field = false) => {

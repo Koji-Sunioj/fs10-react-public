@@ -1,4 +1,4 @@
-import GridColumn from "./gridcolumn";
+import GridColumn from "./GridColumn";
 
 const Loading = () => {
   return (

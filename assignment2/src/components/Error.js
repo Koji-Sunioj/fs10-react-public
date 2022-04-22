@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import GridColumn from "./gridcolumn";
+import GridColumn from "./GridColumn";
 
 const ErrorMessage = ({ tried }) => {
   const ErrorType = (

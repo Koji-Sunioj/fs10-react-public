@@ -2,11 +2,11 @@ import "./App.css";
 import PropTypes from "prop-types";
 
 //import useCountry from "./hooks/usecountry";
-import GridColumn from "./components/gridcolumn";
+import GridColumn from "./components/GridColumn";
 import withcountry from "./hocs/withcountry";
-import GotCountry from "./components/gotcountry";
-import ErrorMessage from "./components/error";
-import Loading from "./components/loading";
+import GotCountry from "./components/GotCountry";
+import ErrorMessage from "./components/Error";
+import Loading from "./components/Loading";
 
 const App = ({ country, data, update, isloading, isError }) => {
   const getCountryData = (event) => {
