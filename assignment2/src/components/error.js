@@ -3,13 +3,12 @@ import PropTypes from "prop-types";
 import GridColumn from "./gridcolumn";
 
 const ErrorMessage = ({ tried }) => {
-  const errorType = (
+  const ErrorType = (
     <p>
       Can't find any country called <strong>{tried}</strong> &#129300;
     </p>
   );
-
-  return <GridColumn>{errorType}</GridColumn>;
+  return <GridColumn>{ErrorType}</GridColumn>;
 };
 
 ErrorMessage.propTypes = { tried: PropTypes.string };
