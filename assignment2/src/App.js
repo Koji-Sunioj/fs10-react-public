@@ -20,7 +20,7 @@ const App = ({ country, data, update, isloading, isError }) => {
       <GridColumn>
         <h1>RestCountries API</h1>
         <form onSubmit={getCountryData}>
-          <label htmlFor="country">Country Name: </label>
+          <label htmlFor="country">Country Names: </label>
           <input
             type="text"
             name="country"
