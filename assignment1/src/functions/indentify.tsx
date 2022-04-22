@@ -1,4 +1,4 @@
-const identify = (header) => {
+const identify = (header:string) => {
   return header.split(" ").join("-").toLocaleLowerCase();
 };
 
