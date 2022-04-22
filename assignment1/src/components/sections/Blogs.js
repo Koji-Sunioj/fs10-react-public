@@ -1,8 +1,8 @@
 import identify from "../../functions/indentify";
 import blogData from "../sectiondata/blogdata";
-import Section from "../layouts/section";
-import DynamicHeader from "../layouts/dynamicheader";
-import GridRow from "../layouts/gridrow";
+import Section from "../layouts/Section";
+import DynamicHeader from "../layouts/DynamicHeader";
+import GridRow from "../layouts/GridRow";
 
 const Blogs = () => {
   return (

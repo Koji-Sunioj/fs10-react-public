@@ -1,8 +1,8 @@
 import identify from "../../functions/indentify";
 import serviceData from "../sectiondata/servicedata";
-import Section from "../layouts/section";
-import GridRow from "../layouts/gridrow";
-import DynamicHeader from "../layouts/dynamicheader";
+import Section from "../layouts/Section";
+import GridRow from "../layouts/GridRow";
+import DynamicHeader from "../layouts/DynamicHeader";
 
 const Services = () => {
   return (

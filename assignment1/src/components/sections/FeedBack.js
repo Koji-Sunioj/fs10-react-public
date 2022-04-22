@@ -1,5 +1,5 @@
-import Section from "../layouts/section";
-import DynamicHeader from "../layouts/dynamicheader";
+import Section from "../layouts/Section";
+import DynamicHeader from "../layouts/DynamicHeader";
 
 const Feedback = () => {
   return (

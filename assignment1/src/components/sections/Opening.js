@@ -1,6 +1,6 @@
-import Section from "../layouts/section";
-import DynamicHeader from "../layouts/dynamicheader";
-import Animation from "../animation";
+import Section from "../layouts/Section";
+import DynamicHeader from "../layouts/DynamicHeader";
+import Animation from "../Animation";
 
 const Opening = () => {
   return (
