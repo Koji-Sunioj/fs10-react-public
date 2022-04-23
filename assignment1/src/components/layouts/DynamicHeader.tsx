@@ -9,10 +9,13 @@ type DynamicHeaderProps = {
 };
 
 const DynamicHeader = ({ Tag, text, id }: DynamicHeaderProps) => {
-  // <Tag id={id ? id : identify(text)}>{text}</Tag>;
-  const elementid: string = id ? id : identify(text);
-  const el: ReactNode = React.createElement(Tag, { id: elementid }, text);
-  return el;
+  const elementId: string = id ? id : identify(text);
+  const theElement: ReactNode = React.createElement(
+    Tag,
+    { id: elementId },
+    text
+  );
+  return theElement;
 };
 
 export default DynamicHeader;

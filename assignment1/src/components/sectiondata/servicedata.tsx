@@ -1,4 +1,9 @@
-const serviceData: any[] = [
+type ServiceDataFields = {
+  header: string;
+  text: string;
+};
+
+const serviceData: ServiceDataFields[] = [
   {
     header: "Cool things",
     text: 'Sometimes we do cool things. If you like cool things, click on "Read More".',
