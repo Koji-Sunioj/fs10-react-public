@@ -19,7 +19,7 @@ const Feedback = () => {
         <label htmlFor="the-feedback" id="concern-label">
           Your concerns:
         </label>
-        <textarea id="the-feedback" name="concerns" rows="10"></textarea>
+        <textarea id="the-feedback" name="concerns" rows={10}></textarea>
         <button aria-labelledby="feedback name-label concern-label">
           Submit
         </button>

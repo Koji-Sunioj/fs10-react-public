@@ -1,20 +1,17 @@
 import Opening from "./sections/Opening";
-//import Services from "./sections/Services";
-//import TechStack from "./sections/TechStack";
-//import Blogs from "./sections/Blogs";
-//import Feedback from "./sections/FeedBack";
-
-import React from "react";
+import Services from "./sections/Services";
+import TechStack from "./sections/TechStack";
+import Blogs from "./sections/Blogs";
+import Feedback from "./sections/FeedBack";
 
 const Main = () => {
-  /*<Opening />
-      <Services />
-      <TechStack />
-      <Blogs />
-      <Feedback /><Opening />*/
   return (
     <main>
       <Opening />
+      <Services />
+      <TechStack />
+      <Blogs />
+      <Feedback />
     </main>
   );
 };

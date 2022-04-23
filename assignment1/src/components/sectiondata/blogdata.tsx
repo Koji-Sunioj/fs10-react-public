@@ -1,4 +1,4 @@
-const blogData = [
+const blogData: any[] = [
   {
     header: "Dark Keyboards",
     text: "Sometimes dark keyboards are cool. Here I explain why I think they are cool.",

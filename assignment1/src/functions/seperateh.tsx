@@ -1,4 +1,4 @@
-const seperateHeader = (children:any[]) => {
+const seperateHeader = (children: any[]) => {
   let flatChildren: any[] = [].concat.apply([], children);
   let header: any[] = [];
   let others: any[] = [];

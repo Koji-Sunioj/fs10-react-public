@@ -1,6 +1,12 @@
-import PropTypes from "prop-types";
+type GridRowProps = {
+  parentAria: string;
+  htmlID: string;
+  title: string;
+  text: string;
+  image?: any;
+};
 
-const GridRow = ({ parentAria, htmlID, title, text, image }) => (
+const GridRow = ({ parentAria, htmlID, title, text, image }: GridRowProps) => (
   <article>
     <div className="content">
       <h3>{title}</h3>
@@ -12,13 +18,5 @@ const GridRow = ({ parentAria, htmlID, title, text, image }) => (
     </div>
   </article>
 );
-
-GridRow.propTypes = {
-  parentAria: PropTypes.string,
-  htmlID: PropTypes.string,
-  title: PropTypes.string,
-  text: PropTypes.string,
-  image: PropTypes.object,
-};
 
 export default GridRow;

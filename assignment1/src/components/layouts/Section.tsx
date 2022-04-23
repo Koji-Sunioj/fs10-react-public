@@ -1,15 +1,14 @@
 import { ReactNode } from "react";
 import seperateHeader from "../../functions/seperateh";
-import identify from "../../functions/indentify";
 
-type AppProps = {
-  children:  ReactNode[],
+type SectionProps = {
+  children: ReactNode[];
   gridType: string;
-}; 
+};
 
-const Section = ({ children, gridType }:AppProps) => {
-  const [header, others] = seperateHeader(children)
-  
+const Section = ({ children, gridType }: SectionProps) => {
+  const [header, others] = seperateHeader(children);
+
   return (
     <section>
       {header}
@@ -17,6 +16,5 @@ const Section = ({ children, gridType }:AppProps) => {
     </section>
   );
 };
-
 
 export default Section;

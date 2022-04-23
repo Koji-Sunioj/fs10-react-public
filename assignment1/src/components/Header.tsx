@@ -3,33 +3,33 @@ import { useState, useEffect, useRef } from "react";
 const Header = () => {
   const OverSixHundo = window.innerWidth >= 600;
 
-  const [isHiddenPanel] = useState(OverSixHundo ? "block" : "none");
-  const [hiddenHamburger] = useState(OverSixHundo ? "none" : "block");
+  const [isHiddenPanel] = useState<string>(OverSixHundo ? "block" : "none");
+  const [hiddenHamburger] = useState<string>(OverSixHundo ? "none" : "block");
 
-  const nav = useRef();
-  const hamburger = useRef();
-  const toggled = useRef(false);
+  const nav = useRef<HTMLElement>(null);
+  const hamburger = useRef<HTMLParagraphElement>(null);
+  const toggled = useRef<boolean>(false);
 
-  const showPanel = (event) => {
-    function toggleNav(navStyle, toggleBool) {
-      nav.current.style.display = navStyle;
+  const showPanel = (event: any) => {
+    function toggleNav(element: any, navStyle: string, toggleBool: boolean) {
+      element.current.style.display = navStyle;
       toggled.current = toggleBool;
     }
     event.preventDefault();
-    nav.current.style.display === "block"
-      ? toggleNav("none", false)
-      : toggleNav("block", true);
+    nav.current?.style.display === "block"
+      ? toggleNav(nav, "none", false)
+      : toggleNav(nav, "block", true);
   };
 
   const resetPanel = () => {
-    const isOver = window.innerWidth >= 600;
-    if (isOver) {
+    const isOver: boolean = window.innerWidth >= 600;
+    if (isOver && nav.current && hamburger.current) {
       nav.current.style.display = "block";
       hamburger.current.style.display = "none";
       toggled.current = false;
-    } else if (!isOver) {
+    } else if (!isOver && hamburger.current) {
       hamburger.current.style.display = "block";
-      if (!toggled.current) {
+      if (!toggled.current && nav.current) {
         nav.current.style.display = "none";
       }
     }

@@ -1,4 +1,4 @@
-const serviceData = [
+const serviceData: any[] = [
   {
     header: "Cool things",
     text: 'Sometimes we do cool things. If you like cool things, click on "Read More".',
