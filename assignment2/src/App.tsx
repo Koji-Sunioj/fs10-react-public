@@ -8,8 +8,16 @@ import GotCountry from "./components/GotCountry";
 import ErrorMessage from "./components/Error";
 import Loading from "./components/Loading";
 
-const App = ({ country, data, update, isloading, isError }) => {
-  const getCountryData = (event) => {
+type AppProps = {
+  country: string;
+  data: any[];
+  update: (newcountry: string) => void;
+  isloading: boolean;
+  isError: boolean;
+};
+
+const App = ({ country, data, update, isloading, isError }:AppProps) => {
+  const getCountryData = (event:any) => {
     event.preventDefault();
     const newcountry = event.target.country.value;
     update(newcountry);

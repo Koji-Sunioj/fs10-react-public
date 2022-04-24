@@ -1,9 +1,9 @@
 import { Component } from "react";
 
-const withcountry = () => (WrappedData) => {
-  class WithFetch extends Component {
-    constructor() {
-      super();
+const withcountry = () => (WrappedData: any) => {
+  class WithFetch extends Component<any, any> {
+    constructor(props: any) {
+      super(props);
       this.state = {
         country: null,
         data: null,
@@ -12,7 +12,7 @@ const withcountry = () => (WrappedData) => {
       };
     }
 
-    setCountry = async (newcountry) => {
+    setCountry = async (newcountry: string) => {
       if (newcountry !== this.state.country) {
         this.setState({
           country: newcountry,
@@ -29,9 +29,8 @@ const withcountry = () => (WrappedData) => {
       }
     };
 
-    async fetchCountry(country) {
-      let newdata = {};
-      await fetch(`https://restcountries.com/v3.1/name/${country}`)
+    fetchCountry(country: string): any {
+      let fetched = fetch(`https://restcountries.com/v3.1/name/${country}`)
         .then((response) => {
           if (!response.ok) {
             throw new Error("server error");
@@ -39,19 +38,15 @@ const withcountry = () => (WrappedData) => {
             return response.json();
           }
         })
-        .then((data) => {
-          newdata.data = data;
-        })
-        .catch(() => {
-          newdata.error = true;
-        });
-      return newdata;
+        .then((retrieved) => ({ data: retrieved }))
+        .catch(() => ({ error: true }));
+      return fetched;
     }
 
     render() {
       return (
         <WrappedData
-          update={(newcountry) => {
+          update={(newcountry: string) => {
             this.setCountry(newcountry);
           }}
           country={this.state.country}

@@ -1,15 +1,23 @@
-import PropTypes from "prop-types";
-
 import GridColumn from "./GridColumn";
 
-const GotCountry = ({ countries }) => {
-  const cleanObject = (object, field = false) => {
-    return Object.entries(object).map((entry) =>
-      field ? entry[1][field] : entry[1]
+type CountryProps = {
+  countries: any[];
+};
+
+const GotCountry = ({ countries }: CountryProps) => {
+  const cleanObject = (object: {}, field: string | boolean = false) => {
+    return Object.entries(object).map((entry: any) =>
+      typeof field === "string" ? entry[1][field] : entry[1]
     );
   };
 
-  const getOfficial = (names) => {
+  type NameData = {
+    common: string;
+    nativeName: {};
+    official: string;
+  };
+
+  const getOfficial = (names: NameData) => {
     const officialNames = cleanObject(names.nativeName, "official");
     const filtered = new Set([names.official, ...officialNames]);
     return [...filtered];
@@ -33,10 +41,6 @@ const GotCountry = ({ countries }) => {
       ))}
     </>
   );
-};
-
-GotCountry.propTypes = {
-  countries: PropTypes.array,
 };
 
 export default GotCountry;

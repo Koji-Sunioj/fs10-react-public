@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 
-
 const seperateHeader = (children: any[]) => {
   let flatChildren: any[] = [].concat(...children);
   console.log(flatChildren)

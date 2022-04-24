@@ -1,21 +1,21 @@
 import { useState, useEffect } from "react";
 
-const useCountry = (country) => {
-  const [theCountry, setCountry] = useState(country);
-  const [data, setData] = useState(null);
-  const [isError, setError] = useState(false);
-  const [isloading, setLoading] = useState(false);
+const useCountry = (country:string) => {
+  const [theCountry, setCountry] = useState<string>(country);
+  const [data, setData] = useState<any[]|null>(null);
+  const [isError, setError] = useState<boolean>(false);
+  const [isloading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     if (theCountry) {
       setData(null);
       setLoading(true);
-      setError(null);
+      setError(false);
       fetchData();
     }
   }, [theCountry]);
 
-  async function fetchData() {
+  async function fetchData(): Promise<void> {
     await fetch(`https://restcountries.com/v3.1/name/${theCountry}`)
       .then((response) => {
         if (!response.ok) {
