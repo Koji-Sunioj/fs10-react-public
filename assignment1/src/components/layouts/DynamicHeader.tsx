@@ -1,15 +1,9 @@
 import React, { ReactNode } from "react";
-
+import headerProp from "../../functions/headerprop";
 import identify from "../../functions/indentify";
 
-type DynamicHeaderProps = {
-  Tag: string;
-  text: string;
-  id?: string;
-};
-
-const DynamicHeader = ({ Tag, text, id }: DynamicHeaderProps) => {
-  const elementId: string = id ? id : identify(text);
+const DynamicHeader = ({ Tag, text }: headerProp) => {
+  const elementId: string =  identify(text);
   const theElement: ReactNode = React.createElement(
     Tag,
     { id: elementId },

@@ -1,18 +1,19 @@
-import { ReactNode } from "react";
-import seperateHeader from "../../functions/seperateh";
+import { ReactElement, ReactNode } from "react";
+import DynamicHeader from "./DynamicHeader";
+import headerProp from "../../functions/headerprop";
 
 type SectionProps = {
-  children: ReactNode[];
+  children: ReactNode[]|ReactElement;
   gridType: string;
+  header: headerProp
 };
 
-const Section = ({ children, gridType }: SectionProps) => {
-  const [header, others] = seperateHeader(children);
+const Section = ({ children, gridType,header }: SectionProps) => {
 
   return (
     <section>
-      {header}
-      <div className={gridType}>{others}</div>
+      <DynamicHeader Tag={header.Tag} text={header.text}/> 
+      <div className={gridType}>{children}</div>
     </section>
   );
 };

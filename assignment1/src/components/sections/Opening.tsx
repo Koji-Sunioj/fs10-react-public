@@ -1,11 +1,14 @@
 import Section from "../layouts/Section";
-import DynamicHeader from "../layouts/DynamicHeader";
 import Animation from "../Animation";
+import headerProp from "../../functions/headerprop";
 
 const Opening = () => {
+  const header:headerProp = {
+    Tag: "h1",
+    text: "Welcome to the website",
+  }
   return (
-    <Section gridType={"grid-column"}>
-      <DynamicHeader Tag={"h1"} text={"Welcome to the website"} id="opening" />
+    <Section gridType={"grid-column"} header={header}>
       <div className="grid-column__grid-item opening" id="animation">
         <p className="opening__text-element">
           Stay for awhile. You might like it.

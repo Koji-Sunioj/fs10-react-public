@@ -1,10 +1,15 @@
 import Section from "../layouts/Section";
-import DynamicHeader from "../layouts/DynamicHeader";
+import headerProp from "../../functions/headerprop";
 
 const Feedback = () => {
+
+  const header:headerProp = {
+    Tag: "h2",
+    text: "Feedback",
+  }
+
   return (
-    <Section gridType={"grid-column"}>
-      <DynamicHeader Tag={"h2"} text={"Feedback"} />
+    <Section gridType={"grid-column"} header={header}>
       <div className="grid-column__grid-item">
         <p>
           Got something on your mind? Well don't keep it to yourself stranger.

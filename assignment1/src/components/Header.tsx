@@ -42,7 +42,7 @@ const Header = () => {
   return (
     <header className="header">
       <p className="header__logo">
-        <a href="#opening">El Niño &copy;</a>
+        <a href="#welcome-to-the-website">El Niño &copy;</a>
       </p>
       <p id="hamburger" style={{ display: hiddenHamburger }} ref={hamburger}>
         <a href="panel" onClick={showPanel}>

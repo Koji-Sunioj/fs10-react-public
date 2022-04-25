@@ -1,10 +1,15 @@
 import Section from "../layouts/Section";
-import DynamicHeader from "../layouts/DynamicHeader";
+import headerProp from "../../functions/headerprop";
 
 const TechStack = () => {
+
+  const header:headerProp = {
+    Tag: "h2",
+    text: "Tech Stack",
+  }
+
   return (
-    <Section gridType={"grid-column"}>
-      <DynamicHeader Tag={"h2"} text={"Tech Stack"} />
+    <Section gridType={"grid-column"} header={header}>
       <div className="grid-column__grid-item">
         <p>This is the tech stack we use.</p>
         <ul>

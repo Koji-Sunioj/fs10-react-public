@@ -2,12 +2,17 @@ import identify from "../../functions/indentify";
 import serviceData from "../sectiondata/servicedata";
 import Section from "../layouts/Section";
 import GridRow from "../layouts/GridRow";
-import DynamicHeader from "../layouts/DynamicHeader";
+import headerProp from "../../functions/headerprop";
 
 const Services = () => {
+
+  const header:headerProp = {
+    Tag: "h2",
+    text: "Services",
+  }
+
   return (
-    <Section gridType={"gridlike"}>
-      <DynamicHeader Tag={"h2"} text={"Services"} />
+    <Section gridType={"gridlike"} header={header}>
       {serviceData.map((service) => {
         const htmlID = identify(service.header);
         return (
