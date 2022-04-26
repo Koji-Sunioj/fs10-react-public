@@ -2,13 +2,16 @@ import GridColumn from "./GridColumn";
 import CountryProps from "../types/CountryProps";
 
 const GotCountry = ({ countries }: { countries: CountryProps[] }) => {
+  type cleanObjectProps = CountryProps["languages"] | { [key: string]: [] };
+
   const cleanObject = (
-    object: CountryProps["languages"],
+    object: cleanObjectProps,
     field: string | boolean = false
   ): string[] => {
-    return Object.entries(object).map((entry: any) =>
+    const filtered = Object.entries(object).map((entry) =>
       typeof field === "string" ? entry[1][field] : entry[1]
     );
+    return filtered;
   };
 
   const getOfficial = (names: CountryProps["name"]): string[] => {

@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 
+import CountryProps from "../types/CountryProps";
+
 const useCountry = (country: string) => {
   const [theCountry, setCountry] = useState<string>(country);
-  const [data, setData] = useState<any[] | null>(null);
+  const [data, setData] = useState<CountryProps[] | null>(null);
   const [isError, setError] = useState<boolean>(false);
   const [isloading, setLoading] = useState<boolean>(false);
 
