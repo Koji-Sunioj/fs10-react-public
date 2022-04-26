@@ -1,9 +1,6 @@
-type ServiceDataFields = {
-  header: string;
-  text: string;
-};
+import BlogDataProps from '../types/BlogDataProps'
 
-const serviceData: ServiceDataFields[] = [
+const serviceData: BlogDataProps[] = [
   {
     header: "Cool things",
     text: 'Sometimes we do cool things. If you like cool things, click on "Read More".',

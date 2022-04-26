@@ -5,7 +5,6 @@ import Blogs from "./sections/Blogs";
 import Feedback from "./sections/FeedBack";
 
 const Main = () => {
-
   return (
     <main>
       <Opening />

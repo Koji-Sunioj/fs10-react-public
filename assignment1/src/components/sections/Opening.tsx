@@ -1,9 +1,9 @@
 import Section from "../layouts/Section";
 import Animation from "../Animation";
-import headerProp from "../../functions/headerprop";
+import HeaderProp from "../types/HeaderProp";
 
 const Opening = () => {
-  const header:headerProp = {
+  const header: HeaderProp = {
     Tag: "h1",
     text: "Welcome to the website",
   }

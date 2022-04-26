@@ -1,11 +1,11 @@
 import { ReactElement, ReactNode } from "react";
 import DynamicHeader from "./DynamicHeader";
-import headerProp from "../../functions/headerprop";
+import HeaderProp from "../types/HeaderProp";
 
 type SectionProps = {
   children: ReactNode[]|ReactElement;
   gridType: string;
-  header: headerProp
+  header: HeaderProp
 };
 
 const Section = ({ children, gridType,header }: SectionProps) => {

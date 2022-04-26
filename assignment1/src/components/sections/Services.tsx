@@ -2,14 +2,13 @@ import identify from "../../functions/indentify";
 import serviceData from "../sectiondata/servicedata";
 import Section from "../layouts/Section";
 import GridRow from "../layouts/GridRow";
-import headerProp from "../../functions/headerprop";
+import HeaderProp from "../types/HeaderProp";
 
 const Services = () => {
-
-  const header:headerProp = {
+  const header: HeaderProp = {
     Tag: "h2",
     text: "Services",
-  }
+  };
 
   return (
     <Section gridType={"gridlike"} header={header}>

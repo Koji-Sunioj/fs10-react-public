@@ -2,11 +2,11 @@ import "./App.css";
 
 //import useCountry from "./hooks/usecountry";
 import GridColumn from "./components/GridColumn";
-import withcountry from "./hocs/withcountry";
+import withcountry from "./hocs/withCountry";
 import GotCountry from "./components/GotCountry";
 import ErrorMessage from "./components/Error";
 import Loading from "./components/Loading";
-import CountryProps from "./types/countrytypes";
+import CountryProps from "./types/CountryProps";
 
 
 type AppProps = {

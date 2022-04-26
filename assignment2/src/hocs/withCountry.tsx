@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import CountryProps from "../types/countrytypes";
+import CountryProps from "../types/CountryProps";
 
 const withcountry = (AppComponent: React.ElementType) => {
   type ClassTypes = {

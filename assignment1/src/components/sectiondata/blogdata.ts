@@ -1,10 +1,6 @@
-type BlogDataFields = {
-  header: string;
-  text: string;
-  image: { src: string; alt: string };
-};
+import BlogDataProps from '../types/BlogDataProps'
 
-const blogData: BlogDataFields[] = [
+const blogData: BlogDataProps[] = [
   {
     header: "Dark Keyboards",
     text: "Sometimes dark keyboards are cool. Here I explain why I think they are cool.",

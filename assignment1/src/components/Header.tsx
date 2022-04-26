@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, SyntheticEvent } from "react";
 
 const Header = () => {
-  const OverSixHundo:boolean = window.innerWidth >= 600;
+  const OverSixHundo: boolean = window.innerWidth >= 600;
 
   const [isHiddenPanel] = useState<string>(OverSixHundo ? "block" : "none");
   const [hiddenHamburger] = useState<string>(OverSixHundo ? "none" : "block");
@@ -10,15 +10,16 @@ const Header = () => {
   const hamburger = useRef<HTMLParagraphElement>(null!);
   const toggled = useRef<boolean>(false);
 
-  const showPanel = (event: any) => {
-    function toggleNav( navStyle: string, toggleBool: boolean) {
+  const showPanel = (event: SyntheticEvent) => {
+    event.preventDefault();
+    function toggleNav(navStyle: string, toggleBool: boolean) {
       nav.current.style.display = navStyle;
       toggled.current = toggleBool;
     }
-    event.preventDefault();
+
     nav.current.style.display === "block"
-      ? toggleNav( "none", false)
-      : toggleNav( "block", true);
+      ? toggleNav("none", false)
+      : toggleNav("block", true);
   };
 
   const resetPanel = () => {
@@ -27,7 +28,7 @@ const Header = () => {
       nav.current.style.display = "block";
       hamburger.current.style.display = "none";
       toggled.current = false;
-    } else if (!isOver ) {
+    } else if (!isOver) {
       hamburger.current.style.display = "block";
       if (!toggled.current) {
         nav.current.style.display = "none";

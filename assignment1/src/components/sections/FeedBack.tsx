@@ -1,12 +1,11 @@
 import Section from "../layouts/Section";
-import headerProp from "../../functions/headerprop";
+import headerProp from "../types/HeaderProp";
 
 const Feedback = () => {
-
-  const header:headerProp = {
+  const header: headerProp = {
     Tag: "h2",
     text: "Feedback",
-  }
+  };
 
   return (
     <Section gridType={"grid-column"} header={header}>

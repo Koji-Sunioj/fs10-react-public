@@ -1,5 +1,5 @@
 import GridColumn from "./GridColumn";
-import CountryProps from "../types/countrytypes";
+import CountryProps from "../types/CountryProps";
 
 const GotCountry = ({ countries }: { countries: CountryProps[] }) => {
   const cleanObject = (
