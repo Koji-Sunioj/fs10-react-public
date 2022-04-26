@@ -1,8 +1,6 @@
 import { ReactNode } from "react";
 
-type ChildrenProps = { children: ReactNode };
-
-const GridColumn = ({ children }: ChildrenProps) => {
+const GridColumn = ({ children }: { children: ReactNode }) => {
   return (
     <div className="grid">
       <div className="grid-item">{children}</div>

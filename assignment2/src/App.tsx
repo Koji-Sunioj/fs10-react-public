@@ -1,5 +1,4 @@
 import "./App.css";
-import PropTypes from "prop-types";
 
 //import useCountry from "./hooks/usecountry";
 import GridColumn from "./components/GridColumn";
@@ -7,20 +6,43 @@ import withcountry from "./hocs/withcountry";
 import GotCountry from "./components/GotCountry";
 import ErrorMessage from "./components/Error";
 import Loading from "./components/Loading";
+//import CountryProps from "./types/countrytypes";
+
+
+type CountryProps = {
+    ccn3: string;
+    flag: symbol;
+    name: {
+      common: string;
+      nativeName: {};
+      official: string;
+    };
+    capital?: string[];
+    area: number;
+    subregion: string;
+    population: number;
+    languages: string[];
+  };
+
+
 
 type AppProps = {
   country: string;
-  data: any[];
+  data: CountryProps[] | null
   update: (newcountry: string) => void;
   isloading: boolean;
   isError: boolean;
 };
 
-const App = ({ country, data, update, isloading, isError }:AppProps) => {
-  const getCountryData = (event:any) => {
+
+const App = ({ country, data, update, isloading, isError }: AppProps) => {
+
+  const getCountryData = (event: React.FormEvent): void => {
     event.preventDefault();
-    const newcountry = event.target.country.value;
-    update(newcountry);
+    const target = event.target as typeof event.target & {
+      country: { value: string };
+    };
+    update(target.country.value);
   };
 
   return (
@@ -40,17 +62,9 @@ const App = ({ country, data, update, isloading, isError }:AppProps) => {
       </GridColumn>
       {isError && <ErrorMessage tried={country} />}
       {isloading && <Loading />}
-      {data && <GotCountry countries={data} />}
+      {data  && <GotCountry countries={data} />}
     </>
   );
 };
 
-App.propTypes = {
-  country: PropTypes.string,
-  data: PropTypes.array,
-  update: PropTypes.func,
-  isloading: PropTypes.bool,
-  isError: PropTypes.bool,
-};
-
-export default withcountry()(App);
+export default withcountry(App);

@@ -1,23 +1,14 @@
 import GridColumn from "./GridColumn";
+import CountryProps from "../types/countrytypes";
 
-type CountryProps = {
-  countries: any[];
-};
-
-const GotCountry = ({ countries }: CountryProps) => {
+const GotCountry = ({ countries }: { countries: CountryProps[] }) => {
   const cleanObject = (object: {}, field: string | boolean = false) => {
     return Object.entries(object).map((entry: any) =>
       typeof field === "string" ? entry[1][field] : entry[1]
     );
   };
 
-  type NameData = {
-    common: string;
-    nativeName: {};
-    official: string;
-  };
-
-  const getOfficial = (names: NameData) => {
+  const getOfficial = (names: CountryProps["name"]):string[] => {
     const officialNames = cleanObject(names.nativeName, "official");
     const filtered = new Set([names.official, ...officialNames]);
     return [...filtered];
@@ -28,8 +19,8 @@ const GotCountry = ({ countries }: CountryProps) => {
       {countries.map((country) => (
         <GridColumn key={country.ccn3}>
           <h2>
-            {country.flag}
-            {country.name.common}
+            <>{country.flag}</>
+            <>{country.name.common}</>
           </h2>
           {country.capital && <p>capital: {country.capital.join(", ")}</p>}
           <p>official names: {getOfficial(country.name).join(", ")}</p>

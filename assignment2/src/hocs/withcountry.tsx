@@ -1,8 +1,17 @@
 import { Component } from "react";
+import CountryProps from "../types/countrytypes";
 
-const withcountry = () => (WrappedData: any) => {
-  class WithFetch extends Component<any, any> {
-    constructor(props: any) {
+const withcountry =  (WrappedData: any) => {
+
+  type ClassTypes= {
+    country: string | null;
+    data:  CountryProps[] | null  ;
+    loading: boolean;
+    error: boolean;
+  };
+
+  class WithFetch extends Component<{}, ClassTypes> {
+    constructor(props: ClassTypes) {
       super(props);
       this.state = {
         country: null,
@@ -29,7 +38,7 @@ const withcountry = () => (WrappedData: any) => {
       }
     };
 
-    fetchCountry(country: string): any {
+    fetchCountry(country: string):any  {
       let fetched = fetch(`https://restcountries.com/v3.1/name/${country}`)
         .then((response) => {
           if (!response.ok) {
