@@ -1,8 +1,8 @@
 import Section from "../layouts/Section";
-import headerProp from "../types/HeaderProp";
+import HeaderProp from "../types/HeaderProp";
 
 const Feedback = () => {
-  const header: headerProp = {
+  const header: HeaderProp = {
     Tag: "h2",
     text: "Feedback",
   };
