@@ -1,11 +1,10 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import CountryProps from "../types/countrytypes";
 
-const withcountry =  (WrappedData: any) => {
-
-  type ClassTypes= {
+const withcountry = (AppComponent: React.ElementType) => {
+  type ClassTypes = {
     country: string | null;
-    data:  CountryProps[] | null  ;
+    data: CountryProps[] | null;
     loading: boolean;
     error: boolean;
   };
@@ -29,16 +28,16 @@ const withcountry =  (WrappedData: any) => {
           data: null,
           error: false,
         });
-        const newData = await this.fetchCountry(newcountry);
-        if (newData.error) {
+        try {
+          const newData = await this.fetchCountry(newcountry);
+          this.setState({ data: newData, loading: false });
+        } catch {
           this.setState({ loading: false, error: true });
-        } else if (newData.data) {
-          this.setState({ data: newData.data, loading: false });
         }
       }
     };
 
-    fetchCountry(country: string):any  {
+    fetchCountry(country: string): Promise<CountryProps[]> {
       let fetched = fetch(`https://restcountries.com/v3.1/name/${country}`)
         .then((response) => {
           if (!response.ok) {
@@ -47,14 +46,13 @@ const withcountry =  (WrappedData: any) => {
             return response.json();
           }
         })
-        .then((retrieved) => ({ data: retrieved }))
-        .catch(() => ({ error: true }));
+        .then((data) => data);
       return fetched;
     }
 
     render() {
       return (
-        <WrappedData
+        <AppComponent
           update={(newcountry: string) => {
             this.setCountry(newcountry);
           }}

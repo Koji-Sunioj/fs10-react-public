@@ -10,7 +10,7 @@ type CountryProps = {
   area: number;
   subregion: string;
   population: number;
-  languages: string[];
+  languages: {[key: string]: string | {}};
 };
 
 export default CountryProps;

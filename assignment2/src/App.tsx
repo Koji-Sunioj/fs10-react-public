@@ -6,24 +6,7 @@ import withcountry from "./hocs/withcountry";
 import GotCountry from "./components/GotCountry";
 import ErrorMessage from "./components/Error";
 import Loading from "./components/Loading";
-//import CountryProps from "./types/countrytypes";
-
-
-type CountryProps = {
-    ccn3: string;
-    flag: symbol;
-    name: {
-      common: string;
-      nativeName: {};
-      official: string;
-    };
-    capital?: string[];
-    area: number;
-    subregion: string;
-    population: number;
-    languages: string[];
-  };
-
+import CountryProps from "./types/countrytypes";
 
 
 type AppProps = {
@@ -33,7 +16,6 @@ type AppProps = {
   isloading: boolean;
   isError: boolean;
 };
-
 
 const App = ({ country, data, update, isloading, isError }: AppProps) => {
 
