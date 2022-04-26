@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
-const useCountry = (country:string) => {
+const useCountry = (country: string) => {
   const [theCountry, setCountry] = useState<string>(country);
-  const [data, setData] = useState<any[]|null>(null);
+  const [data, setData] = useState<any[] | null>(null);
   const [isError, setError] = useState<boolean>(false);
   const [isloading, setLoading] = useState<boolean>(false);
 

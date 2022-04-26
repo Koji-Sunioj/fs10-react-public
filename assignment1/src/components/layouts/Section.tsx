@@ -3,16 +3,15 @@ import DynamicHeader from "./DynamicHeader";
 import HeaderProp from "../types/HeaderProp";
 
 type SectionProps = {
-  children: ReactNode[]|ReactElement;
+  children: ReactNode[] | ReactElement;
   gridType: string;
-  header: HeaderProp
+  header: HeaderProp;
 };
 
-const Section = ({ children, gridType,header }: SectionProps) => {
-
+const Section = ({ children, gridType, header }: SectionProps) => {
   return (
     <section>
-      <DynamicHeader Tag={header.Tag} text={header.text}/> 
+      <DynamicHeader Tag={header.Tag} text={header.text} />
       <div className={gridType}>{children}</div>
     </section>
   );

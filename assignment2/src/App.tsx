@@ -8,17 +8,15 @@ import ErrorMessage from "./components/Error";
 import Loading from "./components/Loading";
 import CountryProps from "./types/CountryProps";
 
-
 type AppProps = {
   country: string;
-  data: CountryProps[] | null
+  data: CountryProps[] | null;
   update: (newcountry: string) => void;
   isloading: boolean;
   isError: boolean;
 };
 
 const App = ({ country, data, update, isloading, isError }: AppProps) => {
-
   const getCountryData = (event: React.FormEvent): void => {
     event.preventDefault();
     const target = event.target as typeof event.target & {
@@ -44,7 +42,7 @@ const App = ({ country, data, update, isloading, isError }: AppProps) => {
       </GridColumn>
       {isError && <ErrorMessage tried={country} />}
       {isloading && <Loading />}
-      {data  && <GotCountry countries={data} />}
+      {data && <GotCountry countries={data} />}
     </>
   );
 };

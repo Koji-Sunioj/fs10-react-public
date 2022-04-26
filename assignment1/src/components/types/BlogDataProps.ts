@@ -4,4 +4,4 @@ type BlogDataProps = {
   image?: { src: string; alt: string };
 };
 
-export default BlogDataProps
+export default BlogDataProps;

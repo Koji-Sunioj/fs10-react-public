@@ -12,8 +12,8 @@ const GotCountry = ({ countries }: { countries: CountryProps[] }) => {
   };
 
   const getOfficial = (names: CountryProps["name"]): string[] => {
-    const officialNames:string[] = cleanObject(names.nativeName, "official");
-    const filtered:Set<string> = new Set([names.official, ...officialNames]);
+    const officialNames: string[] = cleanObject(names.nativeName, "official");
+    const filtered: Set<string> = new Set([names.official, ...officialNames]);
     return [...filtered];
   };
 

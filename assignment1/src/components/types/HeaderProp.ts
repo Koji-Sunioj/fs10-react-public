@@ -1,6 +1,6 @@
 type HeaderProp = {
-  Tag: string,
-  text:string,
-}
+  Tag: string;
+  text: string;
+};
 
 export default HeaderProp;

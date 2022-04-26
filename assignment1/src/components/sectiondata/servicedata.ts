@@ -1,4 +1,4 @@
-import BlogDataProps from '../types/BlogDataProps'
+import BlogDataProps from "../types/BlogDataProps";
 
 const serviceData: BlogDataProps[] = [
   {
