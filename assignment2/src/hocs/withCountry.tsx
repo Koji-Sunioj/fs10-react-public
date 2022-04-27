@@ -1,72 +1,62 @@
-import React, { Component } from "react";
+import { useState, useEffect } from "react";
 
 import CountryProps from "../types/CountryProps";
 
-const withcountry = (AppComponent: React.ElementType) => {
-  type ClassTypes = {
-    country: string | null;
-    data: CountryProps[] | null;
-    loading: boolean;
-    error: boolean;
-  };
+const withCountry = <Props,>(AppComponent: React.ComponentType<Props>) => {
+  const WithCountry = (props: Props) => {
+    const [theCountry, setCountry] = useState<string|null>(null);
+    const [data, setData] = useState<CountryProps[]|null>(null);
+    const [isError, setError] = useState<boolean>(false);
+    const [isloading, setLoading] = useState<boolean>(false);
 
-  class WithFetch extends Component<{}, ClassTypes> {
-    constructor(props: ClassTypes) {
-      super(props);
-      this.state = {
-        country: null,
-        data: null,
-        loading: false,
-        error: false,
-      };
-    }
-
-    setCountry = async (newcountry: string) => {
-      if (newcountry !== this.state.country) {
-        this.setState({
-          country: newcountry,
-          loading: true,
-          data: null,
-          error: false,
-        });
-        try {
-          const newData = await this.fetchCountry(newcountry);
-          this.setState({ data: newData, loading: false });
-        } catch {
-          this.setState({ loading: false, error: true });
-        }
+    const updateCountry = (country:string) => {
+      if (theCountry != country) {
+        setData(null);
+        setLoading(true);
+        setError(false);
+        setCountry(country);
       }
     };
 
-    fetchCountry(country: string): Promise<CountryProps[]> {
-      let fetched = fetch(`https://restcountries.com/v3.1/name/${country}`)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("server error");
-          } else {
-            return response.json();
-          }
-        })
-        .then((data) => data);
-      return fetched;
+    useEffect(() => {
+      fetchData();
+    }, [theCountry]);
+
+    async function fetchData():Promise<void> {
+      if (theCountry) {
+        await fetch(`https://restcountries.com/v3.1/name/${theCountry}`)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error();
+            } else {
+              return response.json();
+            }
+          })
+          .then((data) => {
+            setLoading(false);
+            setData(data);
+          })
+          .catch(() => {
+            setLoading(false);
+            setError(true);
+          });
+      }
     }
 
-    render() {
-      return (
-        <AppComponent
-          update={(newcountry: string) => {
-            this.setCountry(newcountry);
-          }}
-          country={this.state.country}
-          data={this.state.data}
-          isloading={this.state.loading}
-          isError={this.state.error}
-        />
-      );
-    }
-  }
+    return (
+      <AppComponent
+        {...props}
+        country={theCountry}
+        update={updateCountry}
+        data={data}
+        isError={isError}
+        isloading={isloading}
+      />
+    );
+  };
 
-  return WithFetch;
+  return WithCountry;
 };
 
-export default withcountry;
+export default withCountry;
+
