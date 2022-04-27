@@ -1,19 +1,17 @@
 import "./App.css";
 
-//import useCountry from "./hooks/usecountry";
 import GridColumn from "./components/GridColumn";
 import withcountry from "./hocs/withCountry";
 import GotCountry from "./components/GotCountry";
-import ErrorMessage from "./components/Error";
 import Loading from "./components/Loading";
 import CountryProps from "./types/CountryProps";
 
 type AppProps = {
-  country: string;
-  data: CountryProps[] | null;
-  update: (newcountry: string) => void;
-  isloading: boolean;
-  isError: boolean;
+  country?: string;
+  data?: CountryProps[] | null;
+  update?: (newcountry: string) => void;
+  isloading?: boolean;
+  isError?: boolean;
 };
 
 const App = ({ country, data, update, isloading, isError }: AppProps) => {
@@ -22,7 +20,7 @@ const App = ({ country, data, update, isloading, isError }: AppProps) => {
     const target = event.target as typeof event.target & {
       country: { value: string };
     };
-    update(target.country.value);
+    update!(target.country.value);
   };
 
   return (
@@ -40,7 +38,11 @@ const App = ({ country, data, update, isloading, isError }: AppProps) => {
           <button>Go</button>
         </form>
       </GridColumn>
-      {isError && <ErrorMessage tried={country} />}
+      {isError && (
+        <GridColumn>
+          Can't find any country called <strong>{country}</strong> &#129300;
+        </GridColumn>
+      )}
       {isloading && <Loading />}
       {data && <GotCountry countries={data} />}
     </>
