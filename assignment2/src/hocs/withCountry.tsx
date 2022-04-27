@@ -4,12 +4,12 @@ import CountryProps from "../types/CountryProps";
 
 const withCountry = <Props,>(AppComponent: React.ComponentType<Props>) => {
   const WithCountry = (props: Props) => {
-    const [theCountry, setCountry] = useState<string|null>(null);
-    const [data, setData] = useState<CountryProps[]|null>(null);
+    const [theCountry, setCountry] = useState<string | null>(null);
+    const [data, setData] = useState<CountryProps[] | null>(null);
     const [isError, setError] = useState<boolean>(false);
     const [isloading, setLoading] = useState<boolean>(false);
 
-    const updateCountry = (country:string) => {
+    const updateCountry = (country: string) => {
       if (theCountry != country) {
         setData(null);
         setLoading(true);
@@ -22,7 +22,7 @@ const withCountry = <Props,>(AppComponent: React.ComponentType<Props>) => {
       fetchData();
     }, [theCountry]);
 
-    async function fetchData():Promise<void> {
+    async function fetchData(): Promise<void> {
       if (theCountry) {
         await fetch(`https://restcountries.com/v3.1/name/${theCountry}`)
           .then((response) => {
@@ -59,4 +59,3 @@ const withCountry = <Props,>(AppComponent: React.ComponentType<Props>) => {
 };
 
 export default withCountry;
-

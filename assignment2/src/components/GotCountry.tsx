@@ -1,7 +1,11 @@
 import GridColumn from "./GridColumn";
 import CountryProps from "../types/CountryProps";
 
-const GotCountry = ({ countries }: { countries: CountryProps[] }) => {
+type CountryPropType = {
+  countries: CountryProps[];
+};
+
+const GotCountry = ({ countries }: CountryPropType) => {
   type cleanObjectProps = CountryProps["languages"] | { [key: string]: [] };
 
   const cleanObject = (
